@@ -1,0 +1,1512 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    scroll-behavior: smooth;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.65;
+    width: 100%;
+    height: 100%;
+
+    /* Variables */
+    --white: #fcfcfc;
+    --gold: #c0b283;
+    --black: #373737;
+    --accent: #dcd0c0;
+    --gray: #eeeeee;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+}
+
+p {
+    font-weight: 400;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+}
+
+img {
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all 500ms;
+}
+
+/* 
+    LANDING PAGE BEGINS.
+*/
+.landing-container {
+    width: 100%;
+    min-width: 392px;
+    height: 100vh;
+    background-color: var(--white);
+    position: relative;
+    min-width: 610px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+#grid-left {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: 80%;
+    height: 100vh;
+}
+
+#grid-left a {
+    visibility: hidden;
+}
+
+#grid-left img {
+    width: 100%;
+    height: auto;
+}
+
+#grid-right {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: 80%;
+    height: 100vh;
+}
+
+#grid-right a {
+    visibility: hidden;
+}
+
+#grid-right img {
+    width: 100%;
+    height: auto;
+}
+
+.landing-gold-line {
+    width: 100%;
+    height: 5px;
+    background-color: var(--gold);
+    margin: 0;
+    border: none;
+}
+
+.landing-gold-line-middle {
+    width: 70%;
+    height: 5px;
+    background-color: var(--gold);
+    margin: 0;
+    border: none;
+    display: block;
+    margin: auto;
+}
+
+.landing-gold-line-bottom {
+    width: 100%;
+    height: 5px;
+    background-color: var(--gold);
+    margin: 0;
+    border: none;
+    display: block;
+    margin: auto;
+    position: absolute;
+    bottom: 0;
+}
+
+.grid-middle {
+    display: grid;
+    grid-template-rows: 1fr 5px 1fr;
+    width: 100%;
+    height: 100vh;
+}
+
+.grid-middle-top {
+    position: relative;
+}
+
+.grid-middle-top-container {
+    height: 300px;
+    width: 100%;
+    bottom: 0;
+    display: block;
+    position: absolute;
+    text-align: center;
+}
+
+.landing-heading {
+    font-size: 500%;
+}
+
+.landing-paragraph {
+    margin: 0;
+}
+
+.button {
+    display: block;
+    margin: 30px auto;
+    background-color: var(--gold);
+    width: 250px;
+    font-size: 150%;
+    border-radius: 3px;
+}
+
+.a-landing {
+    text-decoration: none;
+    color: var(--white);
+}
+
+.grid-middle-bottom {
+    height: 300px;
+    width: 100%;
+    position: relative;
+}
+
+.landing-did-you-know-heading {
+    text-align: center;
+    margin: 10px;
+}
+
+#random-fact-message {
+    text-align: center;
+}
+
+.did-you-know-bottom {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+}
+
+.retrieved a {
+    color: var(--gold);
+}
+
+/* Hide the two image scrolling. */
+@media only screen and (max-width: 988px) {
+    .grid {
+        grid-template-columns: none;
+        grid-template-rows: 1fr 2fr 1fr;
+    }
+
+    /* For IE and Edge. */
+    #grid-left, #grid-right {
+        display: none;
+    }
+
+    #grid-left, #grid-right {
+        display: none !important;
+    }
+}
+
+/* Prevent main title from going above screen to where you cannot scroll to it. */
+@media only screen and (max-height: 630px) {
+    .grid {
+        height: 100%;
+    }
+
+    .landing-container {
+        height: 100%;
+    }
+
+    .grid-middle {
+        height: 100%;
+    }
+}
+
+/* 
+    LANDING PAGE ENDS.
+    LISTING PAGE BEGINS.
+*/
+
+/* HEADER */
+.header {
+    background-color: var(--white);
+    width: 100%;
+    height: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    position: relative;
+    border-bottom: 5px solid var(--gold);
+}
+
+.header a {
+    text-decoration: none;
+    color: var(--black);
+}
+
+.header-flex-item {
+    margin: auto 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/* Do not break main navigation words, but leave the drop down ones. */
+.header-flex-item h4 {
+    white-space: nowrap;
+}
+
+/* Hide the buy, sell, find agent, and help and info navigation links. */
+@media only screen and (max-width: 1080px) {
+    .media-hide-navigation {
+        display: none;
+    }
+}
+
+#house-icon {
+    animation: none;
+}
+
+#house-icon:hover {
+    color: var(--gold);
+}
+
+.header-flex-item i {
+    font-size: 13px;
+    padding-top: 2px;
+    animation-name: rotate1;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: rotate1;
+    -webkit-animation-duration: 500ms;
+    -webkit-animation-fill-mode: forwards;
+}
+
+#buy:hover #i-buy {
+    animation-name: rotate;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: rotate;
+    -webkit-animation-duration: 500ms;
+    -webkit-animation-fill-mode: forwards;
+}
+
+#buy:hover #buy-dropdown {
+    display: grid;
+}
+
+#sell:hover #i-sell {
+    animation-name: rotate;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: rotate;
+    -webkit-animation-duration: 500ms;
+    -webkit-animation-fill-mode: forwards;
+}
+
+#sell:hover #sell-dropdown {
+    display: grid;
+}
+#find-agent:hover #i-find-agent {
+    animation-name: rotate;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: rotate;
+    -webkit-animation-duration: 500ms;
+    -webkit-animation-fill-mode: forwards;
+}
+
+#find-agent:hover #find-agent-dropdown {
+    display: grid;
+}
+
+#help-and-info:hover #i-help-and-info {
+    animation-name: rotate;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: rotate;
+    -webkit-animation-duration: 500ms;
+    -webkit-animation-fill-mode: forwards;
+}
+
+#help-and-info:hover #help-and-info-dropdown {
+    display: grid;
+}
+
+.header-flex-item:hover {
+    color: var(--gold);
+    cursor: pointer;
+}
+
+/* These keyframes will rotate the down arrow when the user hovers over the navigation item. */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes rotate1 {
+    from {
+        transform: rotate(180deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+@-webkit-keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+@-webkit-keyframes rotate1 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+.header-flex {
+    display: flex;
+    align-items: center;
+}
+
+#header-navigation {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#buy-dropdown {
+    display: none;
+    bottom: -84px;
+}
+
+#sell-dropdown {
+    display: none;
+    bottom: -84px;
+}
+
+#find-agent-dropdown {
+    display: none;
+    bottom: -191px;
+    left: 0px;
+}
+
+#help-and-info-dropdown {
+    display: none;
+    bottom: -220px;
+    left: 0;
+}
+
+.navigation-dropdown-container {
+    display: none;
+    text-align: center;
+    width: 100px;
+    position: absolute;
+    left: -35px;
+    background-color: var(--gold);
+    z-index: 1;
+}
+.navigation-dropdown-container a {
+    color: var(--white);
+}
+
+.navigation-dropdown-item {
+    border-bottom: 1px solid var(--white);
+}
+
+#header-back-to-portfolio {
+    background-color: var(--gold);
+    color: var(--white);
+    padding: 0 5px;
+}
+
+.back-to-portfolio {
+    color: var(--white) !important;
+}
+
+#header-login-register {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+#header-login:hover a {
+    color: var(--gold);
+}
+
+#header-register:hover a {
+    color: var(--gold);
+}
+
+/* CONTENT */
+.listing-container {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    grid-template-rows: 1fr 230px;
+    position: relative;
+    width: calc(100% - 5px);
+    min-height: calc(
+        100vh - 35px
+    ); /* 35px comes form the height of the header (30px) and the 5px border bottom of the header. */
+    max-height: 150vh;
+}
+
+.listing-item-grid {
+    background-color: var(--gray);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-left: 5px solid var(--gold);
+    display: grid;
+    grid-template-rows: 1fr 100px;
+}
+
+.listing-item-content-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+    grid-auto-rows: 315px;
+    padding: 5px;
+}
+
+/* Hide the buy, sell, find agent, and help and info navigation links. */
+@media only screen and (max-width: 960px) {
+    .listing-item-content-grid {
+        margin: auto;
+    }
+}
+
+.listing-item {
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr 114px 5px;
+    width: 350px;
+    height: 300px;
+    transition: width 1s;
+    -webkit-transition: width 1s;
+}
+
+.displayImage {
+    height: 186px;
+    width: 100%;
+}
+
+.real-estate-image {
+    display: block;
+    width: 100%;
+    height: 186px;
+}
+
+.real-estate-information {
+    position: relative;
+    display: grid;
+    grid-template-rows: 30px 1fr 30px;
+    padding: 5px;
+    background-color: var(--white);
+}
+
+.information-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.bedrooms-bathrooms {
+    float: right;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.bedrooms-bathrooms div {
+    margin: 0 5px;
+}
+
+.bedrooms {
+    display: flex;
+    align-items: center;
+}
+
+.bathrooms {
+    display: flex;
+    align-items: center;
+}
+
+.bedroom-bathroom-count {
+    margin: 0;
+}
+
+.information-middle {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 23px 23px;
+}
+
+.information-middle p {
+    margin: 0;
+}
+
+#p-address {
+    grid-column: 1 / 3;
+}
+
+#p-listing-address,
+#p-type-of-residence {
+    font-size: 12px;
+    color: var(--gold);
+}
+
+#p-listing-age {
+    text-align: right;
+}
+
+#p-type-of-residence {
+    text-align: right;
+    grid-column: 2 / 4;
+}
+
+.information-bottom {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.information-bottom-box {
+    display: flex;
+    align-items: center;
+}
+
+.information-bottom-box a,
+i {
+    margin: 0 2.5px;
+}
+
+.a-button {
+    text-decoration: none;
+    color: var(--black);
+    background-color: var(--white);
+}
+
+.gold-line-flex {
+    position: relative;
+}
+
+.listing-item:hover .gold-line-right {
+    display: block;
+    animation: half-right 0.3s forwards;
+    -webkit-animation: half-right 0.3s forwards;
+}
+
+.listing-item:hover .gold-line-left {
+    display: block;
+    animation: half-left 0.3s forwards;
+    -webkit-animation: half-left 0.3s forwards;
+}
+
+@keyframes half-right {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: calc(50% + 1px);
+    }
+}
+
+@-webkit-keyframes half-right {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: calc(50% + 1px);
+    }
+}
+
+@keyframes half-left {
+    from {
+        margin-left: 50%;
+        width: 0%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 50%;
+    }
+}
+
+@-webkit-keyframes half-left {
+    from {
+        margin-left: 50%;
+        width: 0%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 50%;
+    }
+}
+
+.gold-line-right {
+    position: absolute;
+    top: 0;
+    display: none;
+    height: 5px;
+    margin-left: calc(50% - 1px);
+    background-color: var(--gold);
+}
+
+.gold-line-left {
+    display: none;
+    height: 5px;
+    margin-left: 50%;
+    background-color: var(--gold);
+}
+
+.pagination {
+    text-align: center;
+    background-color: var(--gray);
+}
+
+.pagination-container {
+    display: inline-block;
+}
+
+.pagination-container a {
+    color: var(--black);
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 0 4px;
+}
+
+.pagination-container a.active {
+    font-size: 200%;
+    padding-top: 0;
+    cursor: pointer;
+}
+
+.pagination-container a:hover:not(.active) {
+    animation: resize 300ms forwards;
+    -webkit-animation: resize 300ms forwards;
+    cursor: pointer;
+}
+
+@keyframes resize {
+    from {
+        font-size: 100%;
+        padding-top: 8px;
+    }
+
+    to {
+        font-size: 200%;
+        padding-top: 0px;
+    }
+}
+
+@-webkit-keyframes resize {
+    from {
+        font-size: 100%;
+        padding-top: 8px;
+    }
+
+    to {
+        font-size: 200%;
+        padding-top: 0px;
+    }
+}
+
+/* For the lazy loading animation */
+.fade {
+    transform: translateY(0);
+    opacity: 1.0;
+    transition: all 500ms;
+}
+
+/* LEFT MENU BAR */
+.left-menu {
+    background-color: var(--white);
+    position: relative;
+    padding: 5px;
+}
+
+.underline::after {
+    content: "";
+    display: block;
+    width: 90%;
+    height: 3px;
+    color: var(--gold);
+    background: var(--gold);
+}
+
+.menu-section {
+    display: block;
+    position: relative;
+    margin: 10px 0;
+}
+
+.menu-section h3::after {
+    content: "";
+    display: block;
+    width: 90%;
+    height: 3px;
+    color: var(--gold);
+    background: var(--gold);
+}
+
+.price-range-slider {
+    appearance: none;
+    width: 80%;
+    height: 8px;
+    margin: 7px 0 0 0;
+    padding: 0;
+    background: var(--gold);
+    outline: none;
+    opacity: 0.5;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+}
+
+.price-range-slider:hover {
+    opacity: 1;
+}
+
+.price-range-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1px solid var(--black);
+    cursor: pointer;
+}
+
+.price-range-slider::-moz-range-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1px solid var(--black);
+    cursor: pointer;
+}
+
+#price-value {
+    margin: 0;
+}
+
+.checkbox-flex {
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.radio-button {
+    position: absolute;
+    visibility: hidden;
+}
+
+/* Making a custom checkbox. */
+.checked {
+    position: absolute;
+    top: 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid var(--black);
+    background-color: var(--white);
+}
+
+label {
+    /* Spacing out the label text from the custom checkbox. */
+    display: flex;
+    cursor: pointer;
+}
+
+label p {
+    margin: 0 0 0 25px;
+    padding: 0;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox-flex:hover input ~ .checked {
+    background-color: var(--accent);
+}
+
+/* When the radio button is checked, add a blue background */
+.checkbox-flex input:checked ~ .checked {
+    background-color: var(--white);
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checked:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.checkbox-flex input:checked ~ .checked:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.checkbox-flex .checked:after {
+    top: 0px;
+    left: 0px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--gold);
+}
+
+.checkbox-flex input[type="checkbox"] {
+    position: absolute;
+    visibility: hidden;
+}
+
+/* Creating a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 5px;
+    width: 15px;
+    height: 15px;
+    background-color: var(--white);
+    border: 2px solid var(--black);
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox-flex:hover input ~ .checkmark {
+    background-color: var(--accent);
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-flex input:checked ~ .checkmark {
+    background-color: var(--gold);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-flex input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-flex .checkmark:after {
+    left: 4px;
+    top: 0;
+    width: 5px;
+    height: 10px;
+    border: solid var(--white);
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* FOOTER:
+   The height comes from the listing-container's grid-template-rows as 150px.
+*/
+#footer {
+    background-color: var(--gold);
+    width: calc(100% + 5px);
+    height: 100%;
+    grid-column: 1 / 3;
+    position: relative;
+}
+
+.footer {
+    background-color: var(--gold);
+    width: 100%;
+    height: 230px;
+    position: relative;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-rows: 40px 1fr 20px;
+    height: 100%;
+    position: relative;
+}
+
+.links-column-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* 1fr = 1 column of links */
+    text-align: center;
+    height: 100%;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    color: var(--white);
+}
+
+.footer-links h4 {
+    font-weight: 500;
+}
+
+.footer-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-links-container {
+    width: 150px;
+    margin: 0 auto;
+}
+
+.footer-social-media {
+    position: relative;
+    width: 100%;
+    text-align: right;
+}
+
+.footer-social-media i {
+    font-size: 30px;
+    margin: 5px 10px;
+    color: var(--white);
+}
+
+.all-rights-reserved {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0 10px;
+    text-align: right;
+    width: 100%;
+    color: var(--white);
+}
+
+/* 
+    LISTING PAGE ENDS.
+    LISTING DETAILS PAGE BEGINS.
+*/
+
+.background-container {
+    width: 100%;
+    margin-top: -15px;
+    background-color: var(--gray);
+    min-width: 817px;
+}
+
+.listing-details-container {
+    width: 70%;
+    display: block;
+    position: relative;
+    margin: auto;
+}
+
+.listing-details-container p {
+    margin: 0;
+}
+
+.listing-details-header {
+    width: calc(100% - 10px); /* -10px to center the container after the padding. */
+    height: 200px;
+    background-color: var(--white);
+    margin: 15px 0;
+    padding: 5px;
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    white-space: nowrap;
+}
+
+.listing-details-header-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.listing-details-header-address-flex {
+    display: flex;
+    position: relative;
+}
+#header-location {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 9px;
+    padding-left: 5px;
+    color: var(--gold);
+}
+
+.header-bedroom-bathroom {
+    display: flex;
+    justify-content: right;
+}
+
+.header-bedrooms {
+    display: flex;
+    margin-right: 15px;
+}
+
+.header-bathrooms {
+    display: flex;
+}
+
+.listing-details-header-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.listing-details-header-bottom-left {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    width: 287px
+}
+
+.listing-details-header-bottom-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+    width: 183px;
+    float: right;
+}
+
+.listing-details-header-bottom-right a {
+    text-decoration: none;
+    color: var(--black);
+}
+
+.listing-details-header-bottom-right a:nth-child(1):hover {
+    color: var(--gold);
+}
+
+.image-gallery {
+    background-color: var(--white);
+    width: calc(100% - 10px); /* -10px to center the container after the padding. */
+    padding: 5px 5px 0 5px;
+    display: grid;
+    grid-template-rows: 52.8px 1fr 50px;
+    position: relative;
+    margin: auto;
+}
+
+.listing-details-price {
+    text-align: center;
+}
+
+#listing-details-display-image {
+    display: grid;
+    grid-template-rows: 1fr 200px;
+}
+
+#listing-details-display-image-main {
+    display: block;
+    margin: auto;
+    position: relative;
+    width: 90%;
+    height: 100%;
+    background-color: var(--gray);
+}
+
+.image-large {
+    object-fit: fill;
+    height: 447px;
+    width: auto;
+    display: block;
+    margin: auto;
+}
+
+#listing-details-display-image-gallery {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    border-top: 1px solid var(--gold);
+}
+
+.image-gallery-image {
+    display: block;
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    background-color: var(--gray);
+    cursor: pointer;
+}
+
+.gallery-image {
+    height: 150px;
+    width: 150px;
+}
+
+.listing-details-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    margin: auto;
+    width: 100%;
+}
+
+.image-gallery-button {
+    width: 250px;
+    background-color: var(--gold);
+    border-radius: 5px;
+    display: block;
+    margin: auto;
+}
+
+.image-gallery-button a {
+    text-decoration: none;
+    color: var(--white);
+}
+
+.image-gallery-button:hover {
+    background-color: #fff;
+    border: 1px solid var(--gold);
+}
+
+.image-gallery-button:hover a {
+    color: var(--gold);
+}
+
+.details {
+    width: calc(100% - 10px); /* -10px to center the container after the padding. */
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 27px 1fr;
+    position: relative;
+    background-color: var(--white);
+    margin: 15px 0;
+}
+
+.details-block {
+    display: block;
+    position: relative;
+    text-align: center;
+    margin: auto;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: var(--gold);
+    color: var(--white);
+}
+
+.details-block:hover {
+    background-color: #fff;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    cursor: pointer;
+}
+
+.details-block-selected {
+    display: block;
+    position: relative;
+    text-align: center;
+    margin: auto;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    color: var(--gold);
+    background-color: #fff;
+    border: 1px solid var(--gold);
+}
+
+.details-information-container {
+    width: 100%;
+    height: 500px;
+    grid-column: 1 / 4;
+}
+
+.details-information-section h1 {
+    text-align: center;
+}
+
+.details-information-section h1::after {
+    content: "";
+    display: block;
+    width: 50%;
+    margin: auto;
+    height: 1px;
+    background-color: var(--gold);
+}
+
+.details-button-information-divide {
+    color: var(--gold);
+}
+
+.details-overview-paragraph {
+    height: 100px;
+    overflow: auto;
+}
+
+.details-overview-paragraph-grid-divide {
+    display: block;
+    margin: 15px auto;
+    margin-top: 11px;
+    width: 90%;
+    height: 1px;
+    background-color: var(--gold);
+}
+
+.details-overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    height: 300px;
+}
+
+/* For every odd element (in this case, the text on the left side of grid),
+   make the text (aka font-weight) bold. */
+.details-overview-grid div p:nth-child(odd) {
+    font-weight: 800;
+}
+
+.details-overview-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    height: 100%;
+}
+
+.details-neighborhood-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    height: 428px;
+}
+
+.details-neighborhood-grid-left {
+    display: grid;
+    grid-auto-rows: 50px;
+    overflow: auto;
+}
+
+.details-neighborhood-row {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto 0;
+    background-color: var(--gray);
+    box-shadow: 0px 1px var(--gold);
+    cursor: pointer;
+}
+
+/* To center the text inside the div auto rows. */
+.details-neighborhood-grid-left p {
+    padding: 8px 0;
+}
+
+.details-neighborhood-square-score-object {
+    width: 50px;
+    height: 40px;
+    background-color: var(--gold);
+}
+
+.details-neighborhood-square-score-number {
+    text-align: center;
+    color: var(--white);
+}
+
+.details-neighborhood-grid-right {
+    width: 60%;
+    height: 70%;
+    display: block;
+    margin: auto;
+}
+
+.details-neighborhood-info {
+    display: grid;
+    grid-template-rows: 30px 130px 1fr;
+    height: 100%;
+}
+
+/* The div element containing the paragraph */
+.details-neighborhood-info div:nth-child(2) {
+    overflow: auto;
+}
+
+.details-neighborhood-info div:nth-child(3) {
+    display: block;
+    margin: auto;
+    font-size: 50px;
+    height: 100%;
+}
+
+.details-neighborhood-info h3 {
+    text-align: center;
+}
+
+#contact-agent i {
+    display: flex;
+    align-items: center;
+}
+.contact-agent-div-container {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid var(--gold);
+    height: 30px;
+    margin: 20px 0;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.contact-agent-input {
+    width: 100%;
+    border: none;
+    padding: 0 5px;
+    border-radius: 5px;
+}
+
+.contact-agent-message {
+    width: calc(100% - 12px);
+    height: 220px;
+    margin-bottom: 20px;
+    resize: none;
+    border-radius: 5px;
+    font-family: inherit;
+    border: 1px solid var(--gold);
+    padding: 5px;
+    font-size: 14px;
+}
+
+.contact-agent-button-contact {
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid var(--gold);
+    background-color: var(--gold);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.contact-agent-button-contact:hover {
+    background-color: #fff;
+    color: var(--gold);
+}
+
+.agent-container {
+    background-color: var(--white);
+    width: 14%;
+    min-width: 210px;
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr;
+    position: sticky;
+    float: right;
+    top: 5px;
+    margin-right: 7px;
+    margin-top: 15px;
+}
+
+.agent-image {
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 5px;
+    grid-row: 1 / 3;
+}
+
+.agent-name {
+    grid-column: 2 / 4;
+    padding-left: 10px;
+}
+
+#agent-name-text {
+    font-weight: 700;
+}
+
+.agent-job-title {
+    padding-left: 10px;
+}
+
+.agent-phone {
+    display: flex;
+    grid-row: 3 / 4;
+    grid-column: 1 / 4;
+}
+
+.agent-phone p,
+i {
+    margin: 0;
+    margin: auto 5px;
+}
+
+.agent-email p,
+i {
+    margin: 0;
+    margin: auto 5px;
+}
+
+.agent-email {
+    display: flex;
+    grid-row: 4 / 5;
+    grid-column: 1 / 4;
+}
+
+.agent-email-part-two {
+    grid-row: 5 / 6;
+    grid-column: 1 / 4;
+}
+
+.agent-email-part-two p {
+    margin: 0 0 0 30px;
+}
+
+/* Move the agent API/object to the middle column */
+@media only screen and (max-width: 1464.8px) {
+    .background-container {
+        display: grid;
+        grid-template-rows: auto;
+    }
+
+    .agent-container {
+        position: relative;
+        margin: 30px auto 0 auto;
+    }
+}
+
+/* Make the image gallery responsive and keep all elements in its container. */
+@media only screen and (max-width: 1174px) {
+    #listing-details-display-image {
+        display: grid;
+        grid-template-rows: 1fr 350px;
+    }
+
+    #listing-details-display-image-gallery {
+        grid-auto-rows: 180px;
+    }
+
+    .image-large {
+        width: 100%;
+    }
+}
+
+/* 
+    LISTING DETAILS PAGE ENDS.
+*/

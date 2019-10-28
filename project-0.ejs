@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<!-- CSS. -->
+	<link rel="stylesheet" href="../public/css/project-0.css" />
+	<link rel="stylesheet" href="../public/index/css/fontawesome-all.min.css" />
+	<link type="text/css" rel="stylesheet" href="../public/css/magicscroll.css"/>
+
+	<!-- JavaScript. -->
+	<script src="../../public/index/js/jquery.min.js"></script>
+	<script src="../public/javascript/project-0-facts.js"></script>
+	<script type="text/javascript" src="../public/javascript/magicscroll.js"></script>
+
+	<title>project: Real Estate - Tyree's Portfolio</title>
+</head>
+
+<body>
+	<!-- Container. -->
+	<div class="landing-container">
+		<div class="grid">
+			<div id="grid-left" class="MagicScroll" data-options="height: 100%; speed: 10000; step: 0; autoplay: 500; easing: cubic-bezier(.63, .63, 1, 1); orientation: vertical; arrows: off; scrollOnWheel: false; draggable: false; lazyLoad: true;">
+				<img src="../public/images/project-0/residence-15.jpg" alt="Residence" id="image-0">
+				<img src="../public/images/project-0/residence-16.jpg" alt="Residence" id="image-1">
+				<img src="../public/images/project-0/residence-17.jpg" alt="Residence" id="image-2">
+				<img src="../public/images/project-0/residence-18.jpg" alt="Residence" id="image-3">
+				<img src="../public/images/project-0/residence-19.jpg" alt="Residence" id="image-4">
+			</div>
+			<div class="grid-middle">
+				<div class="grid-middle-top">
+					<div class="grid-middle-top-container">
+						<hr class="landing-gold-line">
+						<h1 class="landing-heading">Real-Estators</h1>
+						<p class="landing-paragraph">
+							This website is a project for my portfolio and it focuses on grids, object repetition,
+							and
+							dynamic content. Find a home or residential building that meet all the needs for your
+							desired
+							home. Filter price, location, type of residence, and many more to improve search
+							efficiency.
+							click on a listing to get more detailed information about a potential new home for YOU!
+						</p>
+						<div class="button">
+							<a class="a-landing" href='/project-real-estate/listings0&all-location&{"manufacturedHome":true,"multiUnitProperty":true,"singleFamilyResidence":true,"townhouse":true,"apartment":true}&0&0?page=1'>
+								<h5 class="h-button">GO TO LISTINGS</h5>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="grid-middle-middle">
+					<hr class="landing-gold-line-middle">
+				</div>
+				<div class="grid-middle-bottom">
+					<h1 class="landing-did-you-know-heading">DID YOU KNOW?</h1>
+					<p id="random-fact-message"></p>
+					<div class="did-you-know-bottom">
+						<div class="did-you-know-retrieved">
+							<h4 class="retrieved">Retrieved from: <a
+								href="https://retipster.com/35-real-estate-facts/">REtipster.com</a></h4>
+						</div>
+						<div class="did-you-know-time">
+							<h4 id="local-time"></h4>
+						</div>
+					</div>
+					<hr class="landing-gold-line-bottom">
+				</div>
+			</div>
+			<div id="grid-right" class="MagicScroll" data-options="height: 100%; speed: 10000; step: 0; autoplay: 500; easing: cubic-bezier(.63, .63, 1, 1); orientation: vertical; arrows: off; scrollOnWheel: false; draggable: false; lazyLoad: true;">
+				<img src="../public/images/project-0/residence-6.jpg" alt="Residence" id="image-5">
+				<img src="../public/images/project-0/residence-12.jpg" alt="Residence" id="image-6">
+				<img src="../public/images/project-0/residence-8.jpg" alt="Residence" id="image-7">
+				<img src="../public/images/project-0/residence-19.jpg" alt="Residence" id="image-8">
+				<img src="../public/images/project-0/residence-10.jpg" alt="Residence" id="image-9">
+			</div>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function () {
+
+			// Getting the ID of the paragraph tag where the dynamic text from the random facts
+			// are going to be inserted.
+			let randomFact = document.getElementById("random-fact-message");
+
+			// Getting the length of the facts array.
+			let factsLength = facts.length;
+
+			// Generating a random number between 0 and the length of the facts array.
+			let randomNumber = Math.floor(Math.random() * factsLength);
+
+			// Setting the text of the paragraph tag with an ID of "random-fact-message" to
+			// a random fact in the facts array.
+			randomFact.innerHTML = facts[randomNumber];
+
+			// Storing the DOM element to change the dynamic content with the current time.
+			let timeDisplay = document.getElementById("local-time");
+
+			// Setting the initial date.now() so that it does not appear a second after the page has loaded.
+			timeDisplay.innerText = formatAMPM();
+
+			// Setting the interval of the timer to 1000 milliseconds (or 1 second).
+			setInterval(formatAMPM, 1000);
+
+			// Creating the timer that will display in the top right of the landing page.
+			function formatAMPM() {
+
+				let date = new Date;
+				let hours = date.getHours();
+				let minutes = date.getMinutes();
+				let seconds = date.getSeconds();
+				let ampm = hours >= 12 ? "pm" : "am";
+
+				hours = hours % 12;
+				hours = hours ? hours : 12;
+				minutes = minutes < 10 ? "0" + minutes : minutes;
+				seconds = seconds < 10 ? "0" + seconds : seconds;
+
+				let strTime = hours + ":" + minutes + ":" + seconds + " " + ampm;
+
+				timeDisplay.innerText = strTime;
+
+				return strTime;
+			};
+
+			let imageLength = document.querySelectorAll("img").length;
+
+			for (let i = 0; i < imageLength; i++) {
+				document.getElementById("image-" + i).classList.add("fade");
+			};
+		});
+	</script>
+</body>
+
+</html>

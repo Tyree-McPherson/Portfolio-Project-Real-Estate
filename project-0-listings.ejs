@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- CSS. -->
+    <link rel="stylesheet" href="../public/css/project-0.css" />
+    <link rel="stylesheet" href="../public/index/css/fontawesome-all.min.css" />
+
+    <!-- JavaScript. -->
+    <script src="../../public/index/js/jquery.min.js"></script>
+    <script src="../public/javascript/project-0-facts.js"></script>
+
+    <title>Real-Estators-Listings - Tyree's Portfolio</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-flex">
+            <div class="header-flex-item">
+                <a href="./">
+                    <i id="house-icon" class="fas fa-home"></i>
+                </a>
+            </div>
+            &nbsp;
+            <div class="header-flex-item">
+                <h4>Real-Estators</h4>
+            </div>
+            <div id="header-back-to-portfolio" class="header-flex-item">
+                <h4><a class="back-to-portfolio" href="/">BACK TO PORTFOLIO</a></h4>
+            </div>
+        </div>
+        <div id="header-navigation" class="header-flex">
+            <div id="buy" class="header-flex-item media-hide-navigation">
+                <h4>Buy</h4>
+                &nbsp;
+                <i id="i-buy" class="fas fa-chevron-down"></i>
+                <div id="buy-dropdown" class="navigation-dropdown-container">
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Houses</a>
+                    </div>
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Apartments</a>
+                    </div>
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Rent</a>
+                    </div>
+                </div>
+            </div>
+            <div id="sell" class="header-flex-item media-hide-navigation">
+                <h4>Sell</h4>
+                &nbsp;
+                <i id="i-sell" class="fas fa-chevron-down"></i>
+                <div id="sell-dropdown" class="navigation-dropdown-container">
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Property Value <br> Estimate</a>
+                    </div>
+                </div>
+            </div>
+            <div id="find-agent" class="header-flex-item media-hide-navigation">
+                <h4>Find Agent</h4>
+                &nbsp;
+                <i id="i-find-agent" class="fas fa-chevron-down"></i>
+                <div id="find-agent-dropdown" class="navigation-dropdown-container">
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Brokers</a>
+                    </div>
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Search by Neighborhood</a>
+                    </div>
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Financial Agents</a>
+                    </div>
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Full-time Agents</a>
+                    </div>
+
+                </div>
+            </div>
+            <div id="help-and-info" class="header-flex-item media-hide-navigation">
+                <h4>Help and Info</h4>
+                &nbsp;
+                <i id="i-help-and-info" class="fas fa-chevron-down"></i>
+                <div id="help-and-info-dropdown" class="navigation-dropdown-container">
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Homeowner Info</a>
+                    </div>
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Buying Tips</a>
+                    </div>
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Selling Tips</a>
+                    </div>
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Mortgage Calculator</a>
+                    </div>
+                    <div class="navigation-dropdown-item">
+                        <a href="#">What's an Agent?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="header-login-register" class="header-flex">
+            <div id="header-login" class="header-flex-item">
+                <h4><a href="#login.html">Login</a></h4>
+            </div>
+            &nbsp;
+            <div id="header-register" class="header-flex-item">
+                <h4><a href="#register.html">Register</a></h4>
+            </div>
+        </div>
+    </header>
+    <div class="listing-container">
+
+        <!-- Left Menu/Filtering -->
+        <div class="left-menu">
+            <h1 class="underline">Search Filter</h1>
+
+            <!-- Section Price -->
+            <section class="menu-section">
+                <h3>Price</h3>
+                <input type="range" name="filter-price" value="0" min="0" max="2500000" id="price-range"
+                    class="price-range-slider">
+                <p id="price-value"></p>
+            </section>
+
+            <!-- Section Location -->
+            <section class="menu-section">
+                <h3>Location</h3>
+                <div id="filter-location">
+                    <div class="checkbox-flex">
+                        <label for="all-location">
+                            <input type="radio" name="location" value="all-location" id="all-location"
+                                class="radio-button">
+                            <span class="checked"></span>
+                            <p>All</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="alberta">
+                            <input type="radio" name="location" value="AB" id="alberta" class="radio-button">
+                            <span class="checked"></span>
+                            <p>Alberta</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="british-columbia">
+                            <input type="radio" name="location" value="BC" id="british-columbia" class="radio-button">
+                            <span class="checked"></span>
+                            <p>British Columbia</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="manitoba">
+                            <input type="radio" name="location" value="MB" id="manitoba" class="radio-button">
+                            <span class="checked"></span>
+                            <p>Manitoba</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="new-brunswick">
+                            <input type="radio" name="location" value="NB" id="new-brunswick" class="radio-button">
+                            <span class="checked"></span>
+                            <p>New Brunswick</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="newfoundland-and-labrador">
+                            <input type="radio" name="location" value="NL" id="newfoundland-and-labrador"
+                                class="radio-button">
+                            <span class="checked"></span>
+                            <p>Newfoundland and Labrador</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="northwest-territories">
+                            <input type="radio" name="location" value="NT" id="northwest-territories"
+                                class="radio-button">
+                            <span class="checked"></span>
+                            <p>Northwest Territories</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="nova-scotia">
+                            <input type="radio" name="location" value="NS" id="nova-scotia" class="radio-button">
+                            <span class="checked"></span>
+                            <p>Nova Scotia</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="nunavut">
+                            <input type="radio" name="location" value="NU" id="nunavut" class="radio-button">
+                            <span class="checked"></span>
+                            <p>Nunavut</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="ontario">
+                            <input type="radio" name="location" value="ON" id="ontario" class="radio-button">
+                            <span class="checked"></span>
+                            <p>Ontario</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="prince-edward-island">
+                            <input type="radio" name="location" value="PE" id="prince-edward-island"
+                                class="radio-button">
+                            <span class="checked"></span>
+                            <p>Prince Edward Island</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="quebec">
+                            <input type="radio" name="location" value="QC" id="quebec" class="radio-button">
+                            <span class="checked"></span>
+                            <p>Quebec</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="saskatchewan">
+                            <input type="radio" name="location" value="SK" id="saskatchewan" class="radio-button">
+                            <span class="checked"></span>
+                            <p>Saskatchewan</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="yukon">
+                            <input type="radio" name="location" value="YT" id="yukon" class="radio-button">
+                            <span class="checked"></span>
+                            <p>Yukon</p>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Type of Residence -->
+            <section class="menu-section">
+                <h3>Type of Residence</h3>
+                <div id="filter-residence">
+                    <div class="checkbox-flex">
+                        <label for="manufacturedHome">
+                            <input type="checkbox" name="manufactured-home" value="Manufactured Home" id="manufacturedHome">
+                            <span class="checkmark"></span>
+                            <p>Manufactured Home</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="multiUnitProperty">
+                            <input type="checkbox" name="multi-unit-property" value="Multi-Unit Property"
+                                id="multiUnitProperty">
+                            <span class="checkmark"></span>
+                            <p>Multi-Unit Property</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="singleFamilyResidence">
+                            <input type="checkbox" name="singleFamilyResidence" value="Single-Family Residence"
+                                id="singleFamilyResidence">
+                            <span class="checkmark"></span>
+                            <p>Single-Family Residence</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="townhouse">
+                            <input type="checkbox" name="townhouse" value="Townhouse" id="townhouse">
+                            <span class="checkmark"></span>
+                            <p>Townhouse</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="apartment">
+                            <input type="checkbox" name="apartment" value="Apartment" id="apartment">
+                            <span class="checkmark"></span>
+                            <p>Apartment</p>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Bedrooms -->
+            <section class="menu-section">
+                <h3>Bedrooms</h3>
+                <div id="filter-bedroom">
+                    <div class="checkbox-flex">
+                        <label for="bedroom-0">
+                            <input type="radio" name="bedrooms" value="0" checked id="bedroom-0"
+                                class="radio-button">
+                            <span class="checked"></span>
+                            <p>All</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="bedroom-1">
+                            <input type="radio" name="bedrooms" value="1" id="bedroom-1" class="radio-button">
+                            <span class="checked"></span>
+                            <p>1</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="bedroom-2">
+                            <input type="radio" name="bedrooms" value="2" id="bedroom-2" class="radio-button">
+                            <span class="checked"></span>
+                            <p>2</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="bedroom-3">
+                            <input type="radio" name="bedrooms" value="3" id="bedroom-3" class="radio-button">
+                            <span class="checked"></span>
+                            <p>3</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="bedroom-4-more">
+                            <input type="radio" name="bedrooms" value="4" id="bedroom-4-more"
+                                class="radio-button">
+                            <span class="checked"></span>
+                            <p>4+</p>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Bathrooms -->
+            <section class="menu-section">
+                <h3>Bathrooms</h3>
+                <div id="filter-bathroom">
+                    <div class="checkbox-flex">
+                        <label for="bathroom-all">
+                            <input type="radio" name="bathroom" value="0" checked id="bathroom-all" 
+                            class="radio-button">
+                            <span class="checked"></span>
+                            <p>All</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="bathroom-1">
+                            <input type="radio" name="bathroom" value="1" id="bathroom-1" 
+                            class="radio-button">
+                            <span class="checked"></span>
+                            <p>1</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="bathroom-2">
+                            <input type="radio" name="bathroom" value="2" id="bathroom-2" 
+                            class="radio-button">
+                            <span class="checked"></span>
+                            <p>2</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="bathroom-3">
+                            <input type="radio" name="bathroom" value="3" id="bathroom-3" 
+                            class="radio-button">
+                            <span class="checked"></span>
+                            <p>3</p>
+                        </label>
+                    </div>
+                    <div class="checkbox-flex">
+                        <label for="bathroom-4">
+                            <input type="radio" name="bathroom" value="4" id="bathroom-4" 
+                            class="radio-button">
+                            <span class="checked"></span>
+                            <p>4+</p>
+                        </label>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- The grid for the main grid and the pagination. -->
+        <div class="listing-item-grid">
+            <div class="listing-item-content-grid">
+                <!-- Main listing item container. -->
+                <% for (let i = 0; i < listing; i++) { %>
+                <%
+                    let getDisplayPrice = document[i].displayListing.price;
+                    
+                    // This function adds a comma as a thousand separator.
+                    function thousandSeparator(number) {
+                        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    };
+                    
+                    // Adding commas to the price numeric value where necessary.
+                    let displayPrice = thousandSeparator(getDisplayPrice);
+
+                    let routeUrl = "./listing-details";
+                %>
+                <div class="listing-item">
+                    <a href=<%= routeUrl + document[i]._id; %>>
+                        <div class="real-estate-image">
+                            <img data-lazy=<%= document[i].displayListing.image %> alt="Residence Image" class="displayImage">
+                        </div>
+                    </a>
+                    <div class="real-estate-information">
+                        <div class="information-top">
+                            <div>
+                                <h2 id="real-estate-price">$<%= displayPrice; %></h2>
+                            </div>
+                            <div class="bedrooms-bathrooms">
+                                <div class="bedrooms">
+                                    <i class="fas fa-bed"></i>
+                                    <p id="bedrooms-count" class="bedroom-bathroom-count">
+                                        <%= document[i].displayListing.bedroom; %></p>
+                                </div>
+                                <div class="bathrooms">
+                                    <i class="fas fa-bath"></i>
+                                    <p id="bathrooms-count" class="bedroom-bathroom-count">
+                                        <%= document[i].displayListing.bathroom; %></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="information-middle">
+                            <p id="p-address"><%= document[i].displayListing.address; %></p>
+                            <p id="p-listing-age"><%= document[i].displayListing.age; %></p>
+                            <p id="p-listing-address"><%= document[i].displayListing.cityTownProvince; %></p>
+                            <p id="p-type-of-residence"><%= document[i].displayListing.typeOfResidence; %></p>
+                            <p></p> <!-- To push the "type of residence" P tag to the nex div column -->
+                        </div>
+                        <div class="information-bottom">
+                            <div class="information-bottom-box">
+                                <!-- To push the "View" button to the right. -->
+                            </div>
+                            <div class="information-bottom-box">
+                                <!-- This href will load the listing-detail-information web page with the dynamic content (passing)
+                            of this real-estate listing. -->
+                                <a href=<%= routeUrl + document[i]._id; %> class="a-button">View
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gold-line-flex">
+                        <div class="gold-line-left"></div>
+                        <div class="gold-line-right"></div>
+                    </div>
+                </div>
+                <!-- Main listing item container end. -->
+                <% }; %>
+
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <div class="pagination-container">
+                    <div id="pagination-list" class="pagination-row">
+                        <a>&laquo;</a>
+                        <a>1</a>
+                        <a>2</a>
+                        <a>&raquo;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+            <div class="footer-grid">
+                <div class="footer-social-media">
+                    <i class="fab fa-youtube"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-facebook-square"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-linkedin"></i>
+                    <i class="fab fa-pinterest-square"></i>
+                </div>
+                <div class="links-column-grid">
+                    <div class="footer-links-container">
+                        <div class="footer-links">
+                            <h4><b>Company</b></h4>
+                            <a href="#about-us.html">About Us</a>
+                            <a href="#contact.html">Contact</a>
+                            <a href="#our-partners.html">Our Partners</a>
+                            <a href="#terms-of-service.html">Terms of Service</a>
+                            <a href="#privacy-policy.html">Privacy Policy</a>
+                            <a href="#feedback.html">Feedback</a>
+                        </div>
+                    </div>
+                    <div class="footer-links-container">
+                        <div class="footer-links">
+                            <h4><strong>Agents</strong></h4>
+                            <a href="#become-an-agent.html">Become an Agent</a>
+                            <a href="#agent-near-me.html">Agent Near Me</a>
+                            <a href="#agent-login.html">Agent Login</a>
+                            <a href="#agent-code-of-conduct.html">Agent Code of Conduct</a>
+                            <a href="#agent-faq.html">Agent FAQ</a>
+                        </div>
+                    </div>
+                    <div class="footer-links-container">
+                        <div class="footer-links">
+                            <h4><strong>More</strong></h4>
+                            <a href="#real-estate-news.html">Real-Estate News</a>
+                            <a href="#commercial-resources.html">Commercial Resources</a>
+                            <a href="#blobal-buyers.html">Global Buyers</a>
+                            <a href="#general-faq.html">General FAQ</a>
+                            <a href="#help.html">Help</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="footer-all-rights-reserved" class="all-rights-reserved"></div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+            // Setting up the dynamic year for all rights reserved and the text.
+            var copyright = "&copy; ";
+            var year = new Date();
+            var reserved = " Real-Estators.com All Rights Reserved.";
+            document.getElementById("footer-all-rights-reserved").innerHTML = copyright + year.getFullYear() + reserved;
+
+            // Dynamically changing the price based on where the price range slider is.
+            // Storing the dynamic content to a variable.
+            var slider = document.getElementById("price-range");
+            var value = document.getElementById("price-value");
+
+            // Setting the text of the element with an ID of "price-value" to the value of the slider.
+            // Converting the value of the price (currently stored as a string) to an integer.
+            var integer = parseInt(slider.value, 10);
+
+            // Listening to the price range slider every time the input has changed.
+            slider.oninput = function () {
+
+                // If the slider is at a value of zero "0"
+                if (slider.value === 0 || slider.value === "0") {
+
+                    // If true, set the value to "Any."
+                    value.innerText = "Any";
+
+                } else if (slider.value === 2500000 || slider.value === "2500000") {
+                    value.innerText = "$2,500,000+";
+                } else {
+
+                    // If false, set the value to the price range value.
+                    // Adding commas to the price numeric value where necessary.
+                    value.innerText = "$" + thousandsSeparator(this.value);
+                };
+            };
+
+            // Adding commas in the price range number where necessary.
+            function thousandsSeparator(number) {
+                return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            };
+
+            // Creating the pagination front-end functionality.
+            let paginationList = document.getElementById("pagination-list");
+            let pageNumber = <%- JSON.stringify(pageNumber) %>;
+            let documentCount = <%- JSON.stringify(listing) %>;
+            
+            // If the amount of returned documents (on the server side) is less than 9,
+            // then do not display pagination for page 2.
+            if (documentCount == 9 && pageNumber == 1) {
+                paginationList.children[0].style.display = "block";
+                paginationList.children[2].style.display = "block";
+                paginationList.children[3].style.display = "block";
+
+            } else if (pageNumber == 1 && documentCount < 9) {
+                paginationList.children[0].style.display = "none";
+                paginationList.children[2].style.display = "none";
+                paginationList.children[3].style.display = "none";
+            };
+
+            if ( pageNumber == 1) {
+                paginationList.children[1].classList.add("active");
+            } else if ( pageNumber == 2) {
+                paginationList.children[2].classList.add("active");
+            };
+
+            for (let i = 0; i < paginationList.childElementCount; i++) {
+                paginationList.children[i].addEventListener("click", function(event) {
+                    if (event.target == paginationList.children[0]) {
+                        pageNumber = 1;
+                    } else if (event.target == paginationList.children[1]) {
+                        pageNumber = 1;
+                    } else if (event.target == paginationList.children[2]) {
+                        pageNumber = 2;
+                    } else if (event.target == paginationList.children[3]) {
+                        pageNumber = 2;
+                    };
+                    executeFilter();
+                });
+            };
+
+            // Lazy loading.
+            // Getting all images in the DOM.
+            const targets = document.querySelectorAll("img");
+
+            // Lazy load function.
+            const lazyload = target => {
+
+                // observing the window viewport.
+                const io = new IntersectionObserver((entries, observer) => {
+
+                    // For each image intersecting with the viewport.
+                    entries.forEach(entry => {
+
+                        // If an image is in the window viewport.
+                        if (entry.isIntersecting) {
+
+                            // Get the actual image that intersected with the window.
+                            let img = entry.target;
+                            let src = img.getAttribute("data-lazy");
+
+                            // Add the attribute and fade class to the image tag in the HTML.
+                            img.setAttribute("src", src);
+                            img.classList.add("fade");
+
+                            // Disconnect the observer when the image is loaded.
+                            observer.disconnect();
+                        };
+                    });
+                });
+
+                // Call observe on the target element.
+                io.observe(target);
+            };
+
+            // Looping over all the image elements in the DOM and apply the observer to them.
+            targets.forEach(lazyload);
+
+            //////////////
+            // Filtering.
+            //////////////
+
+            // Creating a filter object that will be later used to pass each respective value into
+            // the URL parameters for mongoDB filtering/querying.
+            let searchFilter = {
+                // These are all the defaults 
+                price: <%- JSON.stringify(filterPrice) %>,
+                location: <%- JSON.stringify(filterLocation) %>,
+                residence: <%- JSON.stringify(filterResidence) %>,
+                bedroom: <%- JSON.stringify(filterBedroom) %>,
+                bathroom: <%- JSON.stringify(filterBathroom) %>
+            };
+
+            // Price slider filter.
+
+            // Initializing the slider on refresh.
+            slider.value = searchFilter.price;
+            value.innerText = slider.value < 1 ? "Any" : slider.value == 2500000 ? "$" + thousandsSeparator(slider.value) + "+" : "$" + thousandsSeparator(slider.value);
+
+            slider.onmouseup = function () {
+
+                // Setting the price property in the search filter.
+                searchFilter.price = this.value;
+                executeFilter();
+            };
+
+            // Location filter.
+
+            let filterLocationChildren = document.getElementById("filter-location");
+            let filterLocationLength = filterLocationChildren.childElementCount;
+
+            // Initializing the checked radio button on refresh.
+            for (let i = 0; i < filterLocationLength; i++) {
+
+                if (searchFilter.location == filterLocationChildren.children[i].children[0].children[0].value) {
+
+                    document.getElementById(filterLocationChildren.children[i].children[0].children[0].id).checked = true;
+
+                } else if (searchFilter.location === "all-location") {
+
+                    document.getElementById(filterLocationChildren.children[0].children[0].children[0].id).checked = true;
+
+                };
+            };
+
+            // Event listener to detect when at least one radio button is clicked.
+            document.getElementById("filter-location").addEventListener("click", function (event) {
+
+                // Getting the value of the "<input>" tag element.
+                let eventTarget = event.target.value;
+
+                // Setting the location property in the "searchFilter" object to the clicked target's value.
+                searchFilter.location = eventTarget;
+                executeFilter();
+            });
+
+            // Type of Residence Filter.
+
+            let parseResidence = JSON.parse(searchFilter.residence);
+
+            // residence object.
+            let residenceFilter = {
+                manufacturedHome: parseResidence.manufacturedHome,
+                multiUnitProperty: parseResidence.multiUnitProperty,
+                singleFamilyResidence: parseResidence.singleFamilyResidence,
+                townhouse: parseResidence.townhouse,
+                apartment: parseResidence.apartment
+            }
+
+            let filterResidence = document.getElementById("filter-residence");
+            let filterResidenceLength = filterResidence.childElementCount;
+            let countChecked = 0;
+
+            for (property in parseResidence) {
+
+                if (parseResidence[property] === true) {
+                    document.getElementById(property).checked = true;
+                } else {
+                    document.getElementById(property).checked = false;
+                };
+            };
+
+            filterResidence.addEventListener("click", function(event) {
+
+                // Setting the value of the respective property of the "residenceFilter" to false.
+                if (event.target.value == "Manufactured Home" && event.target.checked == false) {
+                    residenceFilter.manufacturedHome = false;
+
+                } else if (event.target.value == "Multi-Unit Property" && event.target.checked == false) {
+                    residenceFilter.multiUnitProperty = false;
+
+                } else if (event.target.value == "Single-Family Residence" && event.target.checked == false) {
+                    residenceFilter.singleFamilyResidence = false;
+
+                } else if (event.target.value == "Townhouse" && event.target.checked == false) {
+                    residenceFilter.townhouse = false;
+
+                } else if (event.target.value == "Apartment" && event.target.checked == false) {
+                    residenceFilter.apartment = false;
+                };
+
+                // Setting the value of the respective property of the "residenceFilter" to true.
+                if (event.target.value == "Manufactured Home" && event.target.checked == true) {
+                    residenceFilter.manufacturedHome = true;
+
+                } else if (event.target.value == "Multi-Unit Property" && event.target.checked == true) {
+                    residenceFilter.multiUnitProperty = true;
+
+                } else if (event.target.value == "Single-Family Residence" && event.target.checked == true) {
+                    residenceFilter.singleFamilyResidence = true;
+
+                } else if (event.target.value == "Townhouse" && event.target.checked == true) {
+                    residenceFilter.townhouse = true;
+
+                } else if (event.target.value == "Apartment" && event.target.checked == true) {
+                    residenceFilter.apartment = true;
+                };
+
+                executeFilter();
+            });
+
+            for (let val in residenceFilter) {
+                let checkIfChecked = filterResidence.children[0].children[0].children[0].checked;
+
+                if (checkIfChecked === true) {
+
+                    residenceFilter[val].value = false;
+                };
+            };
+
+            // Bedroom Filter.
+
+            let filterBedroomChildren = document.getElementById("filter-bedroom");
+            let filterBedroomLength = filterBedroomChildren.childElementCount;
+
+            // Initializing the checked radio button on refresh.
+            for (let i = 0; i < filterBedroomLength; i++) {
+
+                if (searchFilter.bedroom == filterBedroomChildren.children[i].children[0].children[0].value) {
+
+                    document.getElementById(filterBedroomChildren.children[i].children[0].children[0].id).checked = true;
+
+                } else if (searchFilter.bedroom === "all-bedroom") {
+
+                    document.getElementById(filterBedroomChildren.children[0].children[0].children[0].id).checked = true;
+                };
+            };
+
+            // Creating an event listener for the bedroom filter list.
+            document.getElementById("filter-bedroom").addEventListener("click", function (event) {
+
+                // Getting the value of the "<input>" tag element.
+                let eventTarget = parseInt(event.target.value, 10);
+
+                // Setting the value of the bedroom property to the clicked target's value.
+                searchFilter.bedroom = eventTarget;
+                executeFilter();
+            });
+
+            // Bathroom filter.
+
+            let filterBathroomChildren = document.getElementById("filter-bathroom");
+            let filterBathroomLength = filterBathroomChildren.childElementCount;
+
+            // Initializing the checked radio button on refresh.
+            for (let i = 0; i < filterBathroomLength; i++) {
+
+                if (searchFilter.bathroom == filterBathroomChildren.children[i].children[0].children[0].value) {
+
+                    document.getElementById(filterBathroomChildren.children[i].children[0].children[0].id).checked = true;
+
+                } else if (searchFilter.bathroom === "all-bathroom") {
+
+                    document.getElementById(filterBathroomChildren.children[0].children[0].children[0].id).checked = true;
+
+                };
+            };
+
+            // Creating an event listener for the bathroom filter list.
+            document.getElementById("filter-bathroom").addEventListener("click", function (event) {
+
+                // Getting the value of the "<input>" tag element.
+                let eventTargetBathroom = parseInt(event.target.value, 10);
+
+                // Setting the value of the bathroom property to the clicked target's value.
+                searchFilter.bathroom = eventTargetBathroom;
+                executeFilter();
+            });
+
+            // This function sends all the URL parameter information every time the user makes a change to the search filter.
+            function executeFilter() {
+
+                // This is where I pass the properties from the "searchFilter" object to the URL
+                // parameters for Node.js to use those parameters to execute a query to MongoDB.
+                window.location = "./listings" + searchFilter.price + "&" + searchFilter.location + "&" + JSON.stringify(residenceFilter) + "&" + searchFilter.bedroom + "&" + searchFilter.bathroom + "?page=" + pageNumber;
+            };
+        });
+    </script>
+</body>
+
+</html>

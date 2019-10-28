@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <%# CSS %>
+    <link rel="stylesheet" href="../public/css/project-0.css" />
+    <link rel="stylesheet" href="../public/index/css/fontawesome-all.min.css" />
+
+    <%# JavaScript %>
+    <script src="../../public/index/js/jquery.min.js"></script>
+
+    <!-- This will be dynamic  -->
+    <title><%= title %></title>
+</head>
+
+<body>
+    <!-- header. -->
+    <header class="header">
+        <div class="header-flex">
+            <div class="header-flex-item">
+                <a href="./">
+                    <i id="house-icon" class="fas fa-home"></i>
+                </a>
+            </div>
+            &nbsp;
+            <div class="header-flex-item">
+                <h4>Real-Estators</h4>
+            </div>
+            <div id="header-back-to-portfolio" class="header-flex-item">
+                <h4><a class="back-to-portfolio" href="/">BACK TO PORTFOLIO</a></h4>
+            </div>
+        </div>
+        <div id="header-navigation" class="header-flex">
+            <div id="buy" class="header-flex-item media-hide-navigation">
+                <h4>Buy</h4>
+                &nbsp;
+                <i id="i-buy" class="fas fa-chevron-down"></i>
+                <div id="buy-dropdown" class="navigation-dropdown-container">
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Houses</a>
+                    </div>
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Apartments</a>
+                    </div>
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Rent</a>
+                    </div>
+                </div>
+            </div>
+            <div id="sell" class="header-flex-item media-hide-navigation">
+                <h4>Sell</h4>
+                &nbsp;
+                <i id="i-sell" class="fas fa-chevron-down"></i>
+                <div id="sell-dropdown" class="navigation-dropdown-container">
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Property Value <br> Estimate</a>
+                    </div>
+                </div>
+            </div>
+            <div id="find-agent" class="header-flex-item media-hide-navigation">
+                <h4>Find Agent</h4>
+                &nbsp;
+                <i id="i-find-agent" class="fas fa-chevron-down"></i>
+                <div id="find-agent-dropdown" class="navigation-dropdown-container">
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Brokers</a>
+                    </div>
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Search by Neighborhood</a>
+                    </div>
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Financial Agents</a>
+                    </div>
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Full-time Agents</a>
+                    </div>
+
+                </div>
+            </div>
+            <div id="help-and-info" class="header-flex-item media-hide-navigation">
+                <h4>Help and Info</h4>
+                &nbsp;
+                <i id="i-help-and-info" class="fas fa-chevron-down"></i>
+                <div id="help-and-info-dropdown" class="navigation-dropdown-container">
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Homeowner Info</a>
+                    </div>
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Buying Tips</a>
+                    </div>
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Selling Tips</a>
+                    </div>
+                    <div class="navigation-dropdown-item">
+                        <a href="#">Mortgage Calculator</a>
+                    </div>
+                    <div class="navigation-dropdown-item">
+                        <a href="#">What's an Agent?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="header-login-register" class="header-flex">
+            <div id="header-login" class="header-flex-item">
+                <h4><a href="#login.html">Login</a></h4>
+            </div>
+            &nbsp;
+            <div id="header-register" class="header-flex-item">
+                <h4><a href="#register.html">Register</a></h4>
+            </div>
+        </div>
+    </header>
+
+    <div class="background-container">
+
+        <%
+            let getDisplayPrice = document.displayListing.price;
+                    
+            // This function adds a comma as a thousand separator.
+            function thousandSeparator(number) {
+                return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            };
+            
+            // Adding commas to the price numeric value where necessary.
+            let displayPrice = thousandSeparator(getDisplayPrice);
+        %>
+        <br>
+
+        <!-- Agent Card. -->
+        <div class="agent-container">
+            <div id="agent-image" class="agent-image"></div>
+            <div class="agent-name">
+                <b>
+                    <h5 id="agent-name-text"></h5>
+                </b>
+                <h5 id="agent-job-title"></h5>
+            </div>
+            <div class="agent-phone">
+                <i class="fas fa-phone-alt"></i>
+                <p id="agent-phone-number"></p>
+            </div>
+            <div class="agent-email">
+                <i class="fas fa-envelope"></i>
+                <p id="agent-email-text"></p>
+            </div>
+
+            <!-- If the email address is too long, put second half here. -->
+            <div class="agent-email-part-two">
+                <p id="agent-email-second-half"></p>
+            </div>
+        </div>
+
+        <div class="listing-details-container">
+
+            <!-- Listing Details Header. -->
+            <div class="listing-details-header">
+                <div class="listing-details-header-top">
+                    <div>
+                        <div class="listing-details-header-address-flex">
+                            <h1 id="header-address"><%= document.displayListing.address; %></h1>
+                            <h5 id="header-location"><%= document.displayListing.cityTownProvince; %></h5>
+                        </div>
+                        <h5 id="mls-number">MLS<sup>&reg;</sup> Number: <%= document.detailHeader.mls; %></h5>
+                    </div>
+                    <div class="header-bedroom-bathroom">
+                        <div class="header-bedrooms">
+                            <h1><i class="fas fa-bed"></i></h1>
+                            &nbsp;
+                            <h1 id="header-bedroom-count"><%= document.displayListing.bedroom; %></h1>
+                        </div>
+                        <div class="header-bathrooms">
+                            <h1><i class="fas fa-bath"></i></h1>
+                            &nbsp;
+                            <h1 id="header-bathroom-count"><%= document.displayListing.bathroom; %></h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="listing-details-header-middle">
+
+                </div>
+                <div class="listing-details-header-bottom">
+                    <div class="listing-details-header-bottom-left">
+                        <p><%= document.displayListing.age; %></p>
+                        <p>|</p>
+                        <p><%= document.displayListing.typeOfResidence; %></p>
+                    </div>
+                    <div class="listing-details-header-bottom-right">
+                        <div>
+                            <a href="#share-popup">
+                                <i class="fas fa-share-alt"></i>
+                                <p>SHARE</p>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="#save">
+                                <i class="far fa-heart"></i>
+                                <p>SAVE</p>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="#print">
+                                <i class="fas fa-print"></i>
+                                <p>PRINT</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listing Details Image Gallery Section. -->
+            <div class="image-gallery">
+                <div class="listing-details-price">
+                    <h1 id="h-listing-details-price">$<%= displayPrice; %></h1>
+                </div>
+                <div id="listing-details-display-image">
+                    <div id="listing-details-display-image-main"><img data-lazy=<%= document.displayListing.image; %>
+                            alt="Residence Image" id="main-large-image" class="image-large">
+                    </div>
+                    <div id="listing-details-display-image-gallery">
+                        <div class="image-gallery-image">
+                            <img data-lazy=<%= document.displayListing.image; %> alt="Residence Image" id="image-gallery-image-0"
+                                class="gallery-image">
+                        </div>
+                        <div class="image-gallery-image">
+                            <img data-lazy="" alt="Residence Image" id="image-gallery-image-1" class="gallery-image">
+                        </div>
+                        <div class="image-gallery-image">
+                            <img data-lazy="" alt="Residence Image" id="image-gallery-image-2" class="gallery-image">
+                        </div>
+                        <div class="image-gallery-image">
+                            <img data-lazy="" alt="Residence Image" id="image-gallery-image-3" class="gallery-image">
+                        </div>
+                        <div class="image-gallery-image">
+                            <img data-lazy="" alt="Residence Image" id="image-gallery-image-4" class="gallery-image">
+                        </div>
+                    </div>
+                </div>
+                <div class="listing-details-buttons">
+                    <div class="image-gallery-button">
+                        <a href="#book-a-tour-modal">
+                            <h3>BOOK A TOUR</h3>
+                        </a>
+                    </div>
+                    <div class="image-gallery-button">
+                        <a href="#request-information-modal">
+                            <h3>REQUEST INFORMATION</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listing Details Detailed Information. -->
+            <div class="details">
+                <div id="details-overview" class="details-block details-block-selected">
+                    <div class="details-image-text">
+                        <h3>Overview</h3>
+                    </div>
+                </div>
+                <div id="details-neighborhood" class="details-block">
+                    <div class="details-image-text">
+                        <h3>Neighborhood</h3>
+                    </div>
+                </div>
+                <div id="details-contact" class="details-block">
+                    <div class="details-image-text">
+                        <h3>Contact</h3>
+                    </div>
+                </div>
+                <div class="details-information-container">
+                    <hr class="details-button-information-divide">
+                    <div id="details-information-overview" class="details-information-section">
+                        <h1>Overview</h1>
+                        <br>
+                        <div class="details-overview-paragraph">
+                            <p> <%= document.tab.overview.description; %> </p>
+                        </div>
+
+                        <!-- This div tag is used to make the gold line that divides the paragraph and content grid apart. -->
+                        <div class="details-overview-paragraph-grid-divide"></div>
+
+                        <div class="details-overview-grid">
+                            <div class="details-overview-column">
+                                <!--
+                                    Every two "p" tags represent one row of details.
+                                    Every "p" tag with an ID represents an element that is
+                                    going to have dynamic contact injected in that location
+                                    with EJS and MongoDB.
+                                -->
+                                <p>Property Type:</p>
+                                <p id="details-overview-property-type"><%= document.tab.overview.propertyType; %></p>
+
+                                <p>Building Type:</p>
+                                <p id="details-overview-building-type"><%= document.tab.overview.buildingType; %></p>
+
+                                <p>Square Feet:</p>
+                                <p id="details-overview-square-feet"><%= document.tab.overview.squareFeet; %></p>
+
+                                <p>Storeys:</p>
+                                <p id="details-overview-storeys"><%= document.tab.overview.storeys; %></p>
+
+                                <p>Built In:</p>
+                                <p id="details-overview-built-in"><%= document.tab.overview.builtIn; %></p>
+
+                                <p>Parking Type:</p>
+                                <p id="details-overview-parking-type"><%= document.tab.overview.parkingType; %></p>
+                            </div>
+                            <div class="details-overview-column">
+                                <!-- Same rules applies from "details-overview-column-left." -->
+
+                                <p>Architecture Style:</p>
+                                <p id="details-overview-architecture-style">
+                                    <%= document.tab.overview.architectureStyle; %></p>
+
+                                <p>Structures:</p>
+                                <p id="details-overview-structures"><%= document.tab.overview.structures; %></p>
+
+                                <p>Flooring Type:</p>
+                                <p id="details-overview-flooring-type"><%= document.tab.overview.flooringType; %></p>
+
+                                <p>Basement Type:</p>
+                                <p id="details-overview-basement-type"><%= document.tab.overview.basementType; %></p>
+
+                                <p>Heating Type:</p>
+                                <p id="details-overview-heating-type"><%= document.tab.overview.heatingType; %></p>
+
+                                <p>Cooling Type:</p>
+                                <p id="details-overview-cooling-type"><%= document.tab.overview.coolingType; %></p>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <div id="details-information-neighborhood" class="details-information-section">
+                        <h1>Neighborhood</h1>
+                        <div class="details-neighborhood-container">
+                            <div id="details-neighborhood-list" class="details-neighborhood-grid-left">
+                                <div id="details-neighborhood-car-friendly" class="details-neighborhood-row">
+                                    <p>Car Friendly</p>
+                                    <div class="details-neighborhood-square-score-object">
+                                        <p id="details-neighborhood-square-score-number-car-friendly"
+                                            class="details-neighborhood-square-score-number">
+                                            <%= document.tab.neighborhood.carFriendly; %></p>
+                                    </div>
+                                </div>
+                                <div id="details-neighborhood-quiet" class="details-neighborhood-row">
+                                    <p>Quiet</p>
+                                    <div class="details-neighborhood-square-score-object">
+                                        <p id="details-neighborhood-square-score-number-quiet"
+                                            class="details-neighborhood-square-score-number">
+                                            <%= document.tab.neighborhood.quiet; %></p>
+                                    </div>
+                                </div>
+                                <div id="details-neighborhood-elementary-school" class="details-neighborhood-row">
+                                    <p>Elementary School</p>
+                                    <div class="details-neighborhood-square-score-object">
+                                        <p id="details-neighborhood-square-score-number-elementary-school"
+                                            class="details-neighborhood-square-score-number">
+                                            <%= document.tab.neighborhood.elementarySchool; %></p>
+                                    </div>
+                                </div>
+                                <div id="details-neighborhood-highschool" class="details-neighborhood-row">
+                                    <p>Highschool</p>
+                                    <div class="details-neighborhood-square-score-object">
+                                        <p id="details-neighborhood-square-score-number-highschool"
+                                            class="details-neighborhood-square-score-number">
+                                            <%= document.tab.neighborhood.highschool; %></p>
+                                    </div>
+                                </div>
+                                <div id="details-neighborhood-grocery-store" class="details-neighborhood-row">
+                                    <p>Grocery Store</p>
+                                    <div class="details-neighborhood-square-score-object">
+                                        <p id="details-neighborhood-square-score-number-grocery-store"
+                                            class="details-neighborhood-square-score-number">
+                                            <%= document.tab.neighborhood.groceryStore; %></p>
+                                    </div>
+                                </div>
+                                <div id="details-neighborhood-cafe" class="details-neighborhood-row">
+                                    <p>Cafe</p>
+                                    <div class="details-neighborhood-square-score-object">
+                                        <p id="details-neighborhood-square-score-number-cafe"
+                                            class="details-neighborhood-square-score-number">
+                                            <%= document.tab.neighborhood.cafe; %></p>
+                                    </div>
+                                </div>
+                                <div id="details-neighborhood-daycare" class="details-neighborhood-row">
+                                    <p>Daycare</p>
+                                    <div class="details-neighborhood-square-score-object">
+                                        <p id="details-neighborhood-square-score-number-daycare"
+                                            class="details-neighborhood-square-score-number">
+                                            <%= document.tab.neighborhood.daycare; %></p>
+                                    </div>
+                                </div>
+                                <div id="details-neighborhood-pedestrian-friendly" class="details-neighborhood-row">
+                                    <p>Pedestrian Friendly</p>
+                                    <div class="details-neighborhood-square-score-object">
+                                        <p id="details-neighborhood-square-score-number-pedestrian-friendly"
+                                            class="details-neighborhood-square-score-number">
+                                            <%= document.tab.neighborhood.pedestrianFriendly; %></p>
+                                    </div>
+                                </div>
+                                <div id="details-neighborhood-vibrant" class="details-neighborhood-row">
+                                    <p>Vibrant</p>
+                                    <div class="details-neighborhood-square-score-object">
+                                        <p id="details-neighborhood-square-score-number-vibrant"
+                                            class="details-neighborhood-square-score-number">
+                                            <%= document.tab.neighborhood.vibrant; %></p>
+                                    </div>
+                                </div>
+                                <div id="details-neighborhood-night" class="details-neighborhood-row">
+                                    <p>Night</p>
+                                    <div class="details-neighborhood-square-score-object">
+                                        <p id="details-neighborhood-square-score-number-night"
+                                            class="details-neighborhood-square-score-number">
+                                            <%= document.tab.neighborhood.night; %></p>
+                                    </div>
+                                </div>
+                                <div id="details-neighborhood-restaurant" class="details-neighborhood-row">
+                                    <p>Restaurant</p>
+                                    <div class="details-neighborhood-square-score-object">
+                                        <p id="details-neighborhood-square-score-number-restaurant"
+                                            class="details-neighborhood-square-score-number">
+                                            <%= document.tab.neighborhood.restaurant; %></p>
+                                    </div>
+                                </div>
+                                <div id="details-neighborhood-shopping" class="details-neighborhood-row">
+                                    <p>Shopping</p>
+                                    <div class="details-neighborhood-square-score-object">
+                                        <p id="details-neighborhood-square-score-number-shopping"
+                                            class="details-neighborhood-square-score-number">
+                                            <%= document.tab.neighborhood.shopping; %></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="details-neighborhood-grid-right">
+                                <div id="details-neighborhood-info" class="details-neighborhood-info">
+                                    <div>
+                                        <!-- By default, the information title is set to "Car Friendly." -->
+                                        <h3 id="details-neighborhood-info-title">Car Friendly</h3>
+                                    </div>
+                                    <div>
+                                        <p id="details-neighborhood-info-paragraph">
+                                            This rating determines how nice and easy it is to
+                                            get around town. A low rating will mean there is either a lot of traffic
+                                            and/or there are very
+                                            few roads. A high rating will mean driving will not be a problem.
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <i id="details-neighborhood-info-icon" class="fas fa-car"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="details-information-contact" class="details-information-section">
+                        <h1>Contact</h1>
+                        <form action="#contact-agent-success" method="post" name="contact-agent" id="contact-agent">
+                            <div class="contact-agent-div-container">
+                                <input type="text" placeholder="Email Address" id="contact-agent-email"
+                                    class="contact-agent-input">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-agent-div-container">
+                                <input type="text" placeholder="Subject" id="contact-agent-subject"
+                                    class="contact-agent-input">
+                                <i class="fas fa-pencil-alt"></i>
+                            </div>
+                            <div class="contact-agent-message-div-container">
+                                <textarea name="contact-agent-message" id="contact-agent-message" cols="30" rows="10"
+                                    class="contact-agent-message" placeholder="Message Goes Here..."></textarea>
+                            </div>
+                            <div class="contact-agent-button">
+                                <button id="contact-agent-button-submit" class="contact-agent-button-contact">
+                                    <h3>Contact Agent</h3>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Footer. -->
+        <footer class="footer">
+            <div class="footer-grid">
+                <div class="footer-social-media">
+                    <i class="fab fa-youtube"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-facebook-square"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-linkedin"></i>
+                    <i class="fab fa-pinterest-square"></i>
+                </div>
+                <div class="links-column-grid">
+                    <div class="footer-links-container">
+                        <div class="footer-links">
+                            <h4><b>Company</b></h4>
+                            <a href="#about-us.html">About Us</a>
+                            <a href="#contact.html">Contact</a>
+                            <a href="#our-partners.html">Our Partners</a>
+                            <a href="#terms-of-service.html">Terms of Service</a>
+                            <a href="#privacy-policy.html">Privacy Policy</a>
+                            <a href="#feedback.html">Feedback</a>
+                        </div>
+                    </div>
+                    <div class="footer-links-container">
+                        <div class="footer-links">
+                            <h4><strong>Agents</strong></h4>
+                            <a href="#become-an-agent.html">Become an Agent</a>
+                            <a href="#agent-near-me.html">Agent Near Me</a>
+                            <a href="#agent-login.html">Agent Login</a>
+                            <a href="#agent-code-of-conduct.html">Agent Code of Conduct</a>
+                            <a href="#agent-faq.html">Agent FAQ</a>
+                        </div>
+                    </div>
+                    <div class="footer-links-container">
+                        <div class="footer-links">
+                            <h4><strong>More</strong></h4>
+                            <a href="#real-estate-news.html">Real-Estate News</a>
+                            <a href="#commercial-resources.html">Commercial Resources</a>
+                            <a href="#blobal-buyers.html">Global Buyers</a>
+                            <a href="#general-faq.html">General FAQ</a>
+                            <a href="#help.html">Help</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="footer-all-rights-reserved" class="all-rights-reserved"></div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        $(document).ready(function () {
+
+            // Setting up the dynamic year for all rights reserved and the text.
+            var copyright = "&copy; ";
+            var year = new Date();
+            var reserved = " Real-Estators.com All Rights Reserved.";
+            document.getElementById("footer-all-rights-reserved").innerHTML = copyright + year.getFullYear() + reserved;
+
+            // Creating event listeners for each detail button below (vanilla JavaScript version).
+            // document.getElementById("details-overview").addEventListener("click", function () {
+            //     detailedInformationTab("details-overview", "details-information-overview");
+            // });
+            // document.getElementById("details-neighborhood").addEventListener("click", function () {
+            //     detailedInformationTab("details-neighborhood", "details-information-neighborhood");
+            // });
+            // document.getElementById("details-contact").addEventListener("click", function () {
+            //     detailedInformationTab("details-contact", "details-information-contact");
+            // });
+
+            // Creating event listeners for each detail button below (jQuery version).
+            $("#details-overview").on("click", function () {
+                detailedInformationTab("details-overview", "details-information-overview");
+            });
+
+            $("#details-neighborhood").on("click", function () {
+                detailedInformationTab("details-neighborhood", "details-information-neighborhood");
+            });
+
+            $("#details-contact").on("click", function () {
+                detailedInformationTab("details-contact", "details-information-contact");
+            });
+
+            // Initializing the tabs on page load/refresh to the "overview" tab.
+            detailedInformationTab("details-overview", "details-information-overview");
+
+            function detailedInformationTab(buttonClicked, tabClicked) {
+
+                var detailContent = document.getElementsByClassName("details-information-section");
+                var detailContentLength = detailContent.length;
+                var tabs = document.getElementsByClassName("details-block");
+
+                // Hide all the content for each tab.
+                for (i = 0; i < detailContentLength; i++) {
+                    detailContent[i].style.display = "none";
+                };
+
+                // Clear all the buttons with the selected CSS styling.
+                for (i = 0; i < detailContentLength; i++) {
+
+                    // Clearing all the elements with the tag "details-block-selected" so they do not show as selected.
+                    tabs[i].className = tabs[i].className.replace(" details-block-selected", "");
+                };
+
+                // Show the selected CSS styling on the tab button that was clicked
+                // and show the content related to the tab button that was clicked.
+                document.getElementById(tabClicked).style.display = "block";
+                document.getElementById(buttonClicked).className += " details-block-selected";
+            };
+
+            // Clearing the "contact agent" form inputs on page refresh.
+            document.getElementById("contact-agent-email").value = "";
+            document.getElementById("contact-agent-subject").value = "";
+            document.getElementById("contact-agent-message").value = "";
+
+            // Adding an event listener to prevent the submit button on the "contact agent" form from actually submitting.
+            // Also, clearing all the input fields.
+            document.getElementById("contact-agent-button-submit").addEventListener("click", function (event) {
+
+                // Preventing the form from submitting data.
+                event.preventDefault();
+
+                // Clearing the "contact agent" form inputs on submit.
+                document.getElementById("contact-agent-email").value = "";
+                document.getElementById("contact-agent-subject").value = "";
+                document.getElementById("contact-agent-message").value = "";
+            });
+
+            let clientId = "9885a8c865ed81b525aaa04d3b1616bab57ad763393504d404e97635144e6217";
+            let url = "https://api.unsplash.com/search/photos/?client_id=" + clientId + "&query=house";
+
+            fetch(url)
+                .then(function (data) {
+                    return data.json();
+                })
+                .then(function (data) {
+
+                    var currentNumbers = [];
+
+                    // Starting the value "i" at 1 to skip the main static image of the listing.
+                    for (var i = 1; i < 5; i++) {
+
+                        // Initializing the image select algorithm.
+                        imageSelectAlgorithm();
+
+                        function imageSelectAlgorithm() {
+
+                            // Generating a random number.
+                            let randomImageNumber = randomNumberGenerator();
+
+                            // If the randomly generated number is already in the array.
+                            if (currentNumbers.indexOf(randomImageNumber) !== -1) {
+
+                                // Resetting the function and trying to select a new number.
+                                imageSelectAlgorithm();
+                                return;
+                            };
+
+                            // Pushing the newly/valid generated number to the array,
+                            // so the same number/image does not get selected again.
+                            currentNumbers.push(randomImageNumber);
+
+                            // Making the fetched image a background url so that it can be re-sized to fit
+                            // the container of the div.
+                            document.getElementById("image-gallery-image-" + i).setAttribute("src", data.results[randomImageNumber].urls.regular);
+                        };
+                    };
+
+                    // Creating a random number generator to randomly select an image from the unsplash API
+                    // for the image gallery.
+                    function randomNumberGenerator(randomNumber) {
+                        randomNumber = Math.floor(Math.random() * 9);
+                        return randomNumber;
+                    };
+                });
+
+            // Creating variables to dynamically change the agent information on refresh.
+            var agentImage = document.getElementById("agent-image");
+            var agentName = document.getElementById("agent-name-text");
+            var agentJobTitle = document.getElementById("agent-job-title");
+            var agentPhoneNumber = document.getElementById("agent-phone-number");
+            var agentEmailText = document.getElementById("agent-email-text");
+            var agentEmailSecondHalf = document.getElementById("agent-email-second-half");
+
+            // Fetching a fake profile generator using AJAX for the agent card information
+            // located on the right side and is positioned sticky.
+            $.ajax({
+                url: 'https://randomuser.me/api/',
+                dataType: 'json',
+                success: function (data) {
+
+                    // A function to randomly decide the agent's job title.
+                    function agentJobTitleCreate() {
+
+                        let jobTitle = ["Agent", "Broker", "Relator", "Clerk"];
+                        let indexNumber = Math.floor(Math.random() * 3);
+                        var jobPick = jobTitle[indexNumber];
+
+                        return jobPick;
+                    };
+
+                    // Setting and applying all the necessary agent information to the agent card/object.
+                    agentImage.style.backgroundImage = "url(" + data.results[0].picture.medium + ")";
+                    agentName.innerText = data.results[0].name.first + " " + data.results[0].name.last;
+                    agentJobTitle.innerText = agentJobTitleCreate();
+                    agentPhoneNumber.innerText = data.results[0].cell;
+
+                    // Splitting the email if it is too long.
+                    let randomEmail = data.results[0].email;
+                    let randomEmailLength = randomEmail.length;
+                    let emailTooLong = 23;
+
+                    // If the length of the email address is too long (more than 24 characters).
+                    if (randomEmailLength > emailTooLong) {
+
+                        let randomEmailCut = randomEmail.indexOf("@");
+                        let randomEmailFirst = randomEmail.substr(0, randomEmailCut);
+                        let randomEmailLast = randomEmail.substr(randomEmailCut + 1);
+
+                        // Cut the email in two to fit the agent container.
+                        agentEmailText.innerText = randomEmailFirst + "@";
+                        agentEmailSecondHalf.innerText = randomEmailLast;
+                    } else {
+                        agentEmailText.innerText = data.results[0].email;
+                    };
+                }
+            });
+
+            // Creating the functionality for selecting an image from the image
+            // gallery and displaying it on the main large image.
+            // Adding event listeners for all the image gallery images in a for loop.
+            for (let i = 0; i < 5; i++) {
+
+                // Getting the ID for each image gallery element.
+                let imageElementId = "image-gallery-image-" + i;
+
+                // Adding an event listener for each image gallery item.
+                document.getElementById(imageElementId).addEventListener("click", function () {
+                    imageSelect(imageElementId);
+                });
+            };
+
+            // Getting the element that holds the main image.
+            var imageMain = document.getElementById("main-large-image");
+
+            // Creating a function that changes the main image.
+            function imageSelect(imageId) {
+
+                let elementId = document.getElementById(imageId);
+                let imageSrc = elementId.getAttribute("src");
+
+                imageMain.setAttribute("src", imageSrc);
+            };
+
+            ///////////
+            // Creating the functionality for the "Neighborhood" tab.
+            ///////////
+
+            // Getting the length of the total amount of child elements.
+            var neighborhoodLength = document.getElementById("details-neighborhood-list").childElementCount;
+
+            for (let i = 0; i < neighborhoodLength; i++) {
+
+                var neighborhoodList = document.getElementById("details-neighborhood-list");
+
+                document.getElementById(neighborhoodList.children[i].id).addEventListener("click", function () {
+
+                    // Passing the ID of the child element.
+                    selectNeighborhoodDetail(neighborhoodList.children[i].id);
+                });
+            };
+
+            function selectNeighborhoodDetail(neighborhoodListItem) {
+
+                // This gets the inner text from the "p" tag that displays on the left.
+                let neighborhoodListTitle = document.getElementById(neighborhoodListItem).children[0];
+
+                document.getElementById("details-neighborhood-info-title").innerText = neighborhoodListTitle.innerText;
+
+                // Calls a function to now switch the icon and the paragraph, depending on the neighborhood information title.
+                switchNeighborhoodDescriptionIcon();
+            };
+
+            ///////////
+            // Creating the manipulation for the details neighborhood section icon(s). This next block of code
+            // will change the paragraph and icon, depending on what the user selected/clicked on the left.
+            ///////////
+
+            // Getting the class name of the neighborhood icon element.
+            let changeNeighborhoodIcon = document.getElementById("details-neighborhood-info-icon");
+            let infoTitle = document.getElementById("details-neighborhood-info-title");
+
+            let neighborhoodInformationParagraph = document.getElementById("details-neighborhood-info-paragraph");
+
+            // A function that contains a switch statement to switch the neighborhood information
+            // paragraph and icon to their respective paragraph and icon, depending on the
+            // neighborhood information title.
+            function switchNeighborhoodDescriptionIcon() {
+                switch (infoTitle.innerText) {
+                    case "Car Friendly":
+                        neighborhoodInformationParagraph.innerText = "This rating determines how nice and easy it is to \
+                        get around town. A low rating will mean there is either a lot of traffic and/or there are very  \
+                        few roads. A high rating will mean driving will not be a problem.";
+                        changeNeighborhoodIcon.className = "fas fa-car";
+                        break;
+
+                    case "Quiet":
+                        neighborhoodInformationParagraph.innerText = "The quiet rating is dependent on how noisy the   \
+                        neighborhood is day in and day out. This rating can come from the sound of vehicles passing by,\
+                        kids playing in th neighborhood, trains passing by, etc.";
+                        changeNeighborhoodIcon.className = "fas fa-volume-down";
+                        break;
+
+                    case "Elementary School":
+                        neighborhoodInformationParagraph.innerText = " The elementary school rating is all about the  \
+                        quality and quantity of elementary schools. The quantity will ensure a fair amount of choice  \
+                        when selecting the right school and you could never go wrong with a high quality elementary   \
+                        school.";
+                        changeNeighborhoodIcon.className = "fas fa-school";
+                        break;
+
+                    case "Highschool":
+                        neighborhoodInformationParagraph.innerText = "The highschool rating is the same as how        \
+                        elementary schools are rated.";
+                        changeNeighborhoodIcon.className = "fas fa-graduation-cap";
+                        break;
+
+                    case "Grocery Store":
+                        neighborhoodInformationParagraph.innerText = "It is important to be able to purchase the      \
+                        right products for your diet. That is why this grocery rating is here. The lower the rating,  \
+                        the more you are likely to go elsewhere to find you desired servings.";
+                        changeNeighborhoodIcon.className = "fas fa-egg";
+                        break;
+
+                    case "Cafe":
+                        neighborhoodInformationParagraph.innerText = "Do you like to go to Tim Horton's or Starbucks?  \
+                        well this rating is for you. Find out how nice and easy it is to get your daily coffee.";
+                        changeNeighborhoodIcon.className = "fas fa-mug-hot";
+                        break;
+
+                    case "Daycare":
+                        neighborhoodInformationParagraph.innerText = "For parents with young kids, this rating would  \
+                        be important as you would know your child is in a safe environment while you are off to work  \
+                        or elsewhere.";
+                        changeNeighborhoodIcon.className = "fas fa-child";
+                        break;
+
+                    case "Pedestrian Friendly":
+                        neighborhoodInformationParagraph.innerText = "This rating determines how friendly and safe it \
+                        is for you to be walking around in a park, on a sidewalk, near or on a road, etc. Higher is   \
+                        especially good for people without a vehicle and/or like to walk.";
+                        changeNeighborhoodIcon.className = "fas fa-walking";
+                        break;
+
+                    case "Vibrant":
+                        neighborhoodInformationParagraph.innerText = "The vibrant rating determines the atmosphere of \
+                        the neighborhood. This can include how often emergency services are on the road or on-site,   \
+                        public events going on, people socializing out and about, people going out, etc.";
+                        changeNeighborhoodIcon.className = "fas fa-lightbulb";
+                        break;
+
+                    case "Night":
+                        neighborhoodInformationParagraph.innerText = " The night rating determines the amount of      \
+                        night activities will be available and how safe the neighborhood is at night. If you are a    \
+                        night person, this rating will be important to you.";
+                        changeNeighborhoodIcon.className = "fas fa-moon";
+                        break;
+
+                    case "Restaurant":
+                        neighborhoodInformationParagraph.innerText = "Do you like going out for dinner? Well I have   \
+                        you covered with this rating. It is always nice to have a selection of restaurants to choose  \
+                        from and you will get that from a high restaurant rating.";
+                        changeNeighborhoodIcon.className = "fas fa-utensils";
+                        break;
+
+                    case "Shopping":
+                        neighborhoodInformationParagraph.innerText = "Who doesn't like shopping? With this rating,    \
+                        you will be able to determine the amount of local malls and retail stores.";
+                        changeNeighborhoodIcon.className = "fas fa-shopping-cart";
+                        break;
+
+                    default:
+                        neighborhoodInformationParagraph.innerText = "Sorry, please try again";
+                        changeNeighborhoodIcon = "";
+                };
+            };
+
+            // Lazy loading.
+            // Getting all images in the DOM.
+            let target0 = document.getElementById("main-large-image");
+            let target1 = document.getElementById("image-gallery-image-0");
+            const targets = [target0, target1];
+
+            // Lazy load function.
+            const lazyload = target => {
+
+                // observing the window viewport.
+                const io = new IntersectionObserver((entries, observer) => {
+
+                    // For each image intersecting with the viewport.
+                    entries.forEach(entry => {
+
+                        // If an image is in the window viewport.
+                        if (entry.isIntersecting) {
+
+                            // Get the actual image that intersected with the window.
+                            let img = entry.target;
+                            let src = img.getAttribute("data-lazy");
+
+                            // Add the attribute and fade class to the image tag in the HTML.
+                            img.setAttribute("src", src);
+                            img.classList.add("fade");
+
+                            // Disconnect the observer when the image is loaded.
+                            observer.disconnect();
+                        };
+                    });
+                });
+
+                // Call observe on the target element.
+                io.observe(target);
+            };
+
+            // Looping over all the image elements in the DOM and apply the observer to them.
+            targets.forEach(lazyload);
+
+            // Adding the fade animation to the fetch API images.
+			for (let i = 1; i < 5; i++) {
+				document.getElementById("image-gallery-image-" + i).classList.add("fade");
+			};
+        });
+    </script>
+</body>
+
+</html>
