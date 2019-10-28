@@ -8,5 +8,3 @@ There are also agents for every listing as there would be for any other real est
 For the sake of this project, all information will be fake, made up, and some information may
 be unrelated to one another (the same listing) like an image gallery. Anything that resembles "real"
 information from a real world location is completely coincidental.
-
-To view the code for this project, please click the button below.
